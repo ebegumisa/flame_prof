@@ -38,5 +38,6 @@ rebar3.crashdump
 /tmp
 .vscode
 /samples
-/doc
+/doc/*
+!/doc/screenshots
 rebar.lock
