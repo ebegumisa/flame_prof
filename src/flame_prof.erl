@@ -1,3 +1,30 @@
+%%% ============================================================================
+%%% @doc Erlang profiler which generates Linux perf_events output (even on
+%%%      Windows/MacOS).
+%%%
+%%%      This is a general-purpose erlang profiler a little like OTP's `fprof',
+%%%      except...
+%%%
+%%%      <li>It generates Linux perf_events [1] script output [2] intended to be
+%%%          consumed by, and analysed with, a fork of Netflix's Flamescope [3].
+%%%          </li>
+%%%      <li>It uses a call-stack sampling approach rather than attempting to
+%%%          measure each individual call. So it does not need to use Erlang
+%%%          tracing.</li>
+%%%      <li>It retains calling process information including process status,
+%%%          memory usage, message queue lengths and garbage collection info.
+%%%         </li>
+%%%      <li>Provides control over output file writing (e.g. sample flush 
+%%%          frequency, output file rotation).</li>
+%%%      <li>It provides means to automatically select processes to be profiled
+%%%          (e.g. top 100 by reductions). Automatically triggering profiling in
+%%%          in a controlled manner is coming soon.</li>
+%%%
+%%%      [1] [https://en.wikipedia.org/wiki/Perf_(Linux)]<br />
+%%%      [2] [https://linux.die.net/man/1/perf-script]<br />
+%%%      [3] [https://github.com/ebegumisa/flamescope]<br />
+%%% @end
+%%% ============================================================================
 -module(flame_prof).
 
 %%% -- Public Control --
