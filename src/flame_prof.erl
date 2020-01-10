@@ -21,12 +21,13 @@
 %%%      This is a general-purpose erlang profiler a little like OTP's `fprof',
 %%%      except...
 %%%
-%%%      <li>It generates Linux perf_events [1] script output [2] intended to be
-%%%          consumed by, and analysed with, a fork of Netflix's Flamescope [3].
-%%%          </li>
+%%%      <li>It generates Linux perf_events [1] script output [2] (even on 
+%%%          Win/macOS) intended to be consumed by, and analysed with, a fork of
+%%%          Netflix's Flamescope [3].</li>
 %%%      <li>It uses a call-stack sampling approach rather than attempting to
 %%%          measure each individual call. So it does not need to use Erlang
-%%%          tracing.</li>
+%%%          tracing (though it may use tracing for certain optional features).
+%%%          </li>
 %%%      <li>It retains calling process information including process status,
 %%%          memory usage, message queue lengths and garbage collection info.
 %%%         </li>
