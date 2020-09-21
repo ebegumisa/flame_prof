@@ -476,10 +476,10 @@ sampler_p_remove(P, #st_r{ps_grps=PsGrps}=S) ->
      end.
 
 sampler_p_add_grp(P, Status, PsGrps, Ps) ->
-    case Ps of
-        #{P:=Grp} -> Grp;
-        #{}       -> Grp = rand:uniform(11)
-    end,
+    Grp = case maps:is_key(P, Ps) of
+              true -> maps:get(P, Ps);
+              false -> rand:uniform(11)
+          end,
     {case PsGrps of
         #{Grp:=#{P:=X}=PsGrp} ->
             {_,Metrics} = X,
